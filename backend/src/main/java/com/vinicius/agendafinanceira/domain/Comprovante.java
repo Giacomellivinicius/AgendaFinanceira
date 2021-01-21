@@ -5,6 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,13 +19,19 @@ public class Comprovante implements Serializable{
 	@Id
 	private Integer id;
 	
+	@OneToOne
+	@JoinColumn(name="conta_id")
+	@MapsId
+	private Conta conta;
+	
 	private Date dataPagamento;
 	
 	public Comprovante() {}
 
-	public Comprovante(Integer id, Date dataPagamento) {
+	public Comprovante(Integer id,Conta conta, Date dataPagamento) {
 		super();
 		this.id = id;
+		this.conta = conta;
 		this.dataPagamento = dataPagamento;
 	}
 
@@ -32,6 +41,14 @@ public class Comprovante implements Serializable{
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Conta getConta() {
+		return conta;
+	}
+
+	public void setConta(Conta conta) {
+		this.conta = conta;
 	}
 
 	public Date getDataPagamento() {

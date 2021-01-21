@@ -3,8 +3,14 @@ package com.vinicius.agendafinanceira.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.vinicius.agendafinanceira.enums.EstadoPagamento;
@@ -17,11 +23,15 @@ public class Conta implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@ManyToOne
+	@JoinColumn(name = "empresa_id")
 	private Empresa empresa;
 	
-	private String nome;
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "conta")
+	private Comprovante comprovante;
 	
 	private Date dataVencimento;
 	
@@ -31,12 +41,12 @@ public class Conta implements Serializable{
 	
 	public Conta() {}
 
-	public Conta(Integer id, Empresa empresa, String nome, Date dataVencimento,
+	public Conta(Integer id, Empresa empresa,Comprovante comprovante, Date dataVencimento,
 			 TipoCusto tipoCusto, EstadoPagamento estadoPagamento) {
 		super();
 		this.id = id;
 		this.empresa = empresa;
-		this.nome = nome;
+		this.comprovante = comprovante;
 		this.dataVencimento = dataVencimento;
 		this.tipoCusto = tipoCusto.getCod();
 		this.estadoPagamento = estadoPagamento.getCod();
@@ -58,12 +68,13 @@ public class Conta implements Serializable{
 		this.empresa = empresa;
 	}
 
-	public String getNome() {
-		return nome;
+
+	public Comprovante getComprovante() {
+		return comprovante;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setComprovante(Comprovante comprovante) {
+		this.comprovante = comprovante;
 	}
 
 	public Date getDataVencimento() {

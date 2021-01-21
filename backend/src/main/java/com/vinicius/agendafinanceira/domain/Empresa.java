@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.vinicius.agendafinanceira.enums.Prioridade;
@@ -17,10 +20,14 @@ public class Empresa implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String nome;
+	
 	private Integer prioridade;
 	
+	@OneToMany(mappedBy = "empresa")
 	private List<Conta> contas = new ArrayList<>();
 	
 	public Empresa() {}
