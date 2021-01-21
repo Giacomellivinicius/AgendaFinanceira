@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.vinicius.agendafinanceira.enums.Prioridade;
 
-public class Empresas implements Serializable{
+public class Empresa implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -17,9 +17,9 @@ public class Empresas implements Serializable{
 	
 	private List<Conta> contas = new ArrayList<>();
 	
-	public Empresas() {}
+	public Empresa() {}
 
-	public Empresas(Integer id, String nome, Prioridade prioridade) {
+	public Empresa(Integer id, String nome, Prioridade prioridade) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -74,7 +74,7 @@ public class Empresas implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Empresas other = (Empresas) obj;
+		Empresa other = (Empresa) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

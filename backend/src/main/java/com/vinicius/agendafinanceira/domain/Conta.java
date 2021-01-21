@@ -12,7 +12,7 @@ public class Conta implements Serializable{
 	
 	private Integer id;
 	
-	private Integer empresa_id;
+	private Empresa empresa;
 	
 	private String nome;
 	
@@ -24,11 +24,11 @@ public class Conta implements Serializable{
 	
 	public Conta() {}
 
-	public Conta(Integer id, Integer empresa_id, String nome, Date dataVencimento,
+	public Conta(Integer id, Empresa empresa, String nome, Date dataVencimento,
 			 TipoCusto tipoCusto, EstadoPagamento estadoPagamento) {
 		super();
 		this.id = id;
-		this.empresa_id = empresa_id;
+		this.empresa = empresa;
 		this.nome = nome;
 		this.dataVencimento = dataVencimento;
 		this.tipoCusto = tipoCusto.getCod();
@@ -43,12 +43,12 @@ public class Conta implements Serializable{
 		this.id = id;
 	}
 
-	public Integer getEmpresa_id() {
-		return empresa_id;
+	public Empresa getEmpresa() {
+		return empresa;
 	}
 
-	public void setEmpresa_id(Integer empresa_id) {
-		this.empresa_id = empresa_id;
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 	public String getNome() {
