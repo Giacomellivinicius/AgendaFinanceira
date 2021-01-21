@@ -3,13 +3,20 @@ package com.vinicius.agendafinanceira.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.vinicius.agendafinanceira.enums.EstadoPagamento;
 import com.vinicius.agendafinanceira.enums.TipoCusto;
 
+@Entity
+@Table(name="tb_conta")
 public class Conta implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Id
 	private Integer id;
 	
 	private Empresa empresa;
