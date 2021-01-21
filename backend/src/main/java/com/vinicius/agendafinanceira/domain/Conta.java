@@ -33,6 +33,8 @@ public class Conta implements Serializable{
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "conta")
 	private Comprovante comprovante;
 	
+	private Double valor;
+	
 	private Date dataVencimento;
 	
 	private Integer tipoCusto;
@@ -41,12 +43,13 @@ public class Conta implements Serializable{
 	
 	public Conta() {}
 
-	public Conta(Integer id, Empresa empresa,Comprovante comprovante, Date dataVencimento,
-			 TipoCusto tipoCusto, EstadoPagamento estadoPagamento) {
+	public Conta(Integer id, Empresa empresa,Comprovante comprovante, Double valor,
+			Date dataVencimento, TipoCusto tipoCusto, EstadoPagamento estadoPagamento) {
 		super();
 		this.id = id;
 		this.empresa = empresa;
 		this.comprovante = comprovante;
+		this.valor = valor;
 		this.dataVencimento = dataVencimento;
 		this.tipoCusto = tipoCusto.getCod();
 		this.estadoPagamento = estadoPagamento.getCod();
@@ -75,6 +78,14 @@ public class Conta implements Serializable{
 
 	public void setComprovante(Comprovante comprovante) {
 		this.comprovante = comprovante;
+	}
+
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 
 	public Date getDataVencimento() {
