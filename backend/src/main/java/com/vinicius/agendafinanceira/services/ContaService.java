@@ -30,6 +30,11 @@ public class ContaService {
 		return repo.save(obj);
 	}
 	
+	public Conta update(Conta obj){
+		find(obj.getId());
+		return repo.save(obj);
+	}
+	
 	public void delete(Integer id) {
 		find(id);
 		try {
