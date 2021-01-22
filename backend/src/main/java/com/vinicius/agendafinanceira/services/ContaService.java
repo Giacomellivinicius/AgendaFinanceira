@@ -3,11 +3,13 @@ package com.vinicius.agendafinanceira.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.vinicius.agendafinanceira.domain.Conta;
 import com.vinicius.agendafinanceira.repositories.ContaRepository;
+import com.vinicius.agendafinanceira.services.exceptions.DataIntegrityException;
 import com.vinicius.agendafinanceira.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -28,5 +30,15 @@ public class ContaService {
 		return repo.save(obj);
 	}
 	
+	public void delete(Integer id) {
+		find(id);
+		try {
+			repo.deleteById(id);
+		}catch(DataIntegrityViolationException e) {
+			throw new DataIntegrityException(
+					"Não é possível excluir uma Conta que possua comprovantes cadastradas"
+			);
+		}
+	}
 
 }
