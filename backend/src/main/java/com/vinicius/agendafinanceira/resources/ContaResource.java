@@ -40,7 +40,7 @@ public class ContaResource {
 	public ResponseEntity<Void> insert(@RequestBody ContaDTO objDTO){
 		Empresa emp = empresaService.find(objDTO.getEmpresa());
 		Conta c = new Conta (null, emp, objDTO.getValor(), objDTO.getDataVencimento(),
-				TipoCusto.toEnum(objDTO.getTipoCusto()), EstadoPagamento.toEnum(objDTO.getEstadoPagamento()), null);
+				TipoCusto.toEnum(objDTO.getTipoCusto()), EstadoPagamento.PENDENTE, null);
 		c = service.insert(c);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(c.getId()).toUri();
