@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.vinicius.agendafinanceira.domain.Conta;
 import com.vinicius.agendafinanceira.repositories.ContaRepository;
@@ -20,5 +21,10 @@ public class ContaService {
 		 return obj.orElseThrow(() -> new ObjectNotFoundException(
 				 "Objeto não encontrado! Id: " + id + ", Tipo: " + Conta.class.getName()));
 				}
+	
+	/*
+	@Transactional
+	public Conta insert() {}
+	*/
 
 }

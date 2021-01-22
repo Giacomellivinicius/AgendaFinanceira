@@ -25,5 +25,10 @@ public class EmpresaService {
 		obj.setId(null);
 		return repo.save(obj);
 	}
+	
+	public Empresa update(Empresa obj){
+		find(obj.getId());
+		return repo.save(obj);
+	}
 
 }
