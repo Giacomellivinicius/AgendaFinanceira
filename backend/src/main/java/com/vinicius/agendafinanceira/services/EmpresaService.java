@@ -38,7 +38,9 @@ public class EmpresaService {
 		try {
 			repo.deleteById(id);
 		}catch(DataIntegrityViolationException e) {
-			throw new DataIntegrityException("Não é possível excluir uma empresa que possua contas cadastradas");
+			throw new DataIntegrityException(
+					"Não é possível excluir uma empresa que possua contas cadastradas"
+			);
 		}
 	}
 

@@ -21,10 +21,12 @@ public class ContaService {
 		 return obj.orElseThrow(() -> new ObjectNotFoundException(
 				 "Objeto não encontrado! Id: " + id + ", Tipo: " + Conta.class.getName()));
 				}
-	
-	/*
+
 	@Transactional
-	public Conta insert() {}
-	*/
+	public Conta insert (Conta obj) {
+		obj.setId(null);
+		return repo.save(obj);
+	}
+	
 
 }
