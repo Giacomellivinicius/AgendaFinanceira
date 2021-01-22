@@ -11,7 +11,7 @@ import com.vinicius.agendafinanceira.domain.Comprovante;
 import com.vinicius.agendafinanceira.services.ComprovanteService;
 
 @RestController
-@RequestMapping(value="/comprovante")
+@RequestMapping(value="/comprovantes")
 public class ComprovanteResource {
 	
 	@Autowired

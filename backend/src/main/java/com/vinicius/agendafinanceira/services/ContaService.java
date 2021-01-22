@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.vinicius.agendafinanceira.domain.Conta;
 import com.vinicius.agendafinanceira.repositories.ContaRepository;
+import com.vinicius.agendafinanceira.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class ContaService {
@@ -16,7 +17,8 @@ public class ContaService {
 	
 	public Conta find(Integer id) {
 		 Optional<Conta> obj = repo.findById(id);
-		return obj.orElse(null);
-		}
+		 return obj.orElseThrow(() -> new ObjectNotFoundException(
+				 "Objeto não encontrado! Id: " + id + ", Tipo: " + Conta.class.getName()));
+				}
 
 }

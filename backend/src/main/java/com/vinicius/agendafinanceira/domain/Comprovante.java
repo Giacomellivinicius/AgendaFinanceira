@@ -10,6 +10,8 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="tb_comprovante")
 public class Comprovante implements Serializable{
@@ -22,6 +24,7 @@ public class Comprovante implements Serializable{
 	@OneToOne
 	@JoinColumn(name="conta_id")
 	@MapsId
+	@JsonIgnore
 	private Conta conta;
 	
 	private Date dataPagamento;

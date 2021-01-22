@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.vinicius.agendafinanceira.domain.Comprovante;
 import com.vinicius.agendafinanceira.repositories.ComprovanteRepository;
+import com.vinicius.agendafinanceira.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class ComprovanteService {
@@ -16,7 +17,8 @@ public class ComprovanteService {
 	
 	public Comprovante find(Integer id) {
 		 Optional<Comprovante> obj = repo.findById(id);
-		return obj.orElse(null);
-		}
+		 return obj.orElseThrow(() -> new ObjectNotFoundException(
+				 "Objeto não encontrado! Id: " + id + ", Tipo: " + Comprovante.class.getName()));
+				}
 
 }

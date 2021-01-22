@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.vinicius.agendafinanceira.enums.EstadoPagamento;
 import com.vinicius.agendafinanceira.enums.TipoCusto;
 
@@ -26,12 +27,11 @@ public class Conta implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	
 	@ManyToOne
 	@JoinColumn(name = "empresa_id")
+	@JsonIgnore
 	private Empresa empresa;
-	
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "conta")
-	private Comprovante comprovante;
 	
 	private Double valor;
 	
@@ -41,18 +41,21 @@ public class Conta implements Serializable{
 	
 	private Integer estadoPagamento;
 	
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "conta")
+	private Comprovante comprovante;
+	
 	public Conta() {}
 
-	public Conta(Integer id, Empresa empresa,Comprovante comprovante, Double valor,
-			Date dataVencimento, TipoCusto tipoCusto, EstadoPagamento estadoPagamento) {
+	public Conta(Integer id, Empresa empresa, Double valor,Date dataVencimento, 
+			TipoCusto tipoCusto, EstadoPagamento estadoPagamento, Comprovante comprovante) {
 		super();
 		this.id = id;
 		this.empresa = empresa;
-		this.comprovante = comprovante;
 		this.valor = valor;
 		this.dataVencimento = dataVencimento;
 		this.tipoCusto = tipoCusto.getCod();
 		this.estadoPagamento = estadoPagamento.getCod();
+		this.comprovante = comprovante;
 	}
 
 	public Integer getId() {

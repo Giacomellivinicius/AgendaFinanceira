@@ -43,12 +43,12 @@ public class AgendafinanceiraApplication  implements CommandLineRunner{
 		Empresa emp1 = new Empresa(null, "Teste", Prioridade.DESEJAVEL);
 		Empresa emp2 = new Empresa(null, "Teste2", Prioridade.DISPENSAVEL);
 		
-		Conta c1 = new Conta(null, null, null, 10.00, 
-				sdf.parse("15/01/1991 11:00"), TipoCusto.CUSTOFIXO,EstadoPagamento.PAGO);
-		Conta c2 = new Conta(null, null, null, 22.00, 
-				sdf.parse("15/01/1992 22:00"), TipoCusto.CUSTOVARIAVEL,EstadoPagamento.PENDENTE);
-		Conta c3 = new Conta(null, null, null, 33.00, 
-				sdf.parse("15/01/1992 22:00"), TipoCusto.CUSTOVARIAVEL,EstadoPagamento.PAGO);
+		Conta c1 = new Conta(null, null, 10.00, sdf.parse("15/01/1991 11:00"),
+				TipoCusto.CUSTOFIXO,EstadoPagamento.PAGO, null);
+		Conta c2 = new Conta(null, null, 22.00, sdf.parse("15/01/1992 22:00"),
+				TipoCusto.CUSTOVARIAVEL,EstadoPagamento.PENDENTE, null);
+		Conta c3 = new Conta(null, null, 33.00, sdf.parse("15/01/1992 22:00"),
+				TipoCusto.CUSTOVARIAVEL,EstadoPagamento.PAGO, null);
 		
 		Comprovante comp1 = new Comprovante(null, null, sdf.parse("15/02/1922 11:01"));
 		Comprovante comp2 = new Comprovante(null, null, sdf.parse("15/02/1922 12:01"));
