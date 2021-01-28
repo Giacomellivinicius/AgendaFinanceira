@@ -1,0 +1,22 @@
+.main-navbar{
+    display:flex;
+    position: relative;
+    padding: 2px;
+    background-color: #001946;
+    width:98%;
+    height: 80px;
+    border-radius: 20px;
+    align-items: center;
+}
+
+.navbar-logo{
+    margin: 2px;
+    margin-left: 20px;
+    height: 76px;
+}
+
+.logo-text{
+    color: ivory;
+    line-height: 33px;
+    margin-left: 15 px;
+}

@@ -1,0 +1,13 @@
+.navbar-total{
+    background-color: #002954;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 47%;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.navbar-total-text{
+    color:ivory;
+    font-weight: bold;
+}

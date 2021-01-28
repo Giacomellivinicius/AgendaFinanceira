@@ -1,0 +1,17 @@
+.navbar-date{
+    padding:2px;
+    line-height: 35%;
+    align-items: center;
+}
+
+.navbar-date-text{
+    margin:0px;
+    font-weight: bold;
+    color:ivory;
+}
+.navbar-hour{
+    align-items: center;
+    text-align: center;
+    color:ivory;
+    font-weight: bolder;
+}
